@@ -1,15 +1,16 @@
-import { createContext, useState } from "react";
-
+import { createContext, useEffect, useState } from "react";
 
 
 export const AppContext = createContext()
 
 
+const AppProvider = ({ children }) => {
 
-const AppProvider =({children})=>{
-  const [isSidebar,setIsSidebar] = useState(true)
-  return <AppContext.Provider value={{isSidebar,setIsSidebar}}>
-{children}
+  const [isSidebar, setIsSidebar] = useState(false)
+
+
+  return <AppContext.Provider value={{ isSidebar, setIsSidebar }}>
+    {children}
   </AppContext.Provider>
 }
 
