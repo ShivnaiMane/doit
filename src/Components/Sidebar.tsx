@@ -7,8 +7,8 @@ import image from "../assets/image.png"
 import add from "../assets/add.png"
 const Sidebar = () => {
   return (
-    <div className="w-80  bg-lightGreen px-4 py-5 mt-12 " >
-      <div className="absolute top-20 left-28 text-center " >
+    <div className="w-80  bg-lightGreen px-4 py-5 mt-12 mx-auto relative " >
+      <div className="absolute -top-16 left-28 md:left-16 text-center " >
         <img src={profile} alt="Profile" className="w-28" />
         <p>Name</p>
       </div>
