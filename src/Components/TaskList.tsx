@@ -21,7 +21,6 @@ const TaskList = () => {
 
   const filterCompleted = items.filter((item) => item.completed === true);
 
-
   return (
     <div>
       {isList ?
