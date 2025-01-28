@@ -10,8 +10,6 @@ const todosSlice = createSlice({
   name: "todos",
   initialState: {
     items: [],
-    uncompletedTask: [],
-    completedTask: [],
     loading: false,
     error: null,
   },
@@ -23,29 +21,30 @@ const todosSlice = createSlice({
         completed: false,
         important: false
       };
-      state.uncompletedTask.push(newTodo);
-    },
-    uncompeltedTaskAdd: (state, action) => {
-      state.uncompletedTask = action.payload;
-    },
-    completedTaskAdd: (state, action) => {
-      state.completedTask = action.payload;
+      state.items.push(newTodo);
     },
     toggleImpTask: (state, action) => {
       const todo = state.items.find((item) => item.id === action.payload);
       if (todo) {
         todo.important = !todo.important;
       }
+    },
+    toggleCompleteTask: (state, action) => {
+      const todo = state.items.find((item) => item.id === action.payload);
+      if (todo) {
+        todo.completed = !todo.completed;
+      }
     }
   }, extraReducers: (builder) => {
     builder
       .addCase(fetchTodos.pending, (state) => {
-        state.loading = true;
+        state.loading = true
         state.error = null;
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
+        state.items = action.payload
+
       })
       .addCase(fetchTodos.rejected, (state, action) => {
         state.loading = false;
@@ -54,6 +53,6 @@ const todosSlice = createSlice({
   },
 })
 
-export const { addTodo, uncompeltedTaskAdd, completedTaskAdd, toggleImpTask } = todosSlice.actions;
+export const { addTodo, toggleImpTask, toggleCompleteTask } = todosSlice.actions;
 
 export default todosSlice.reducer
